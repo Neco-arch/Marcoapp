@@ -4,12 +4,19 @@ require('dotenv').config()
 
 const app = express()
 
+// Router Import 
+
+const Auth = require('./Routes/Auth')
+
 // Middleware
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Router
+
+app.use('/auth', Auth)
+
 
 
 //Startdaapp

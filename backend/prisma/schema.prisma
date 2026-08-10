@@ -13,21 +13,22 @@ datasource db {
 }
 
 model User {
-  id                   Int          @id @default(autoincrement())
-  username             String       @unique
+  id                   Int           @id @default(autoincrement())
+  username             String        @unique
   password             String
   users_Macronutrients Json
   goal                 Usergoal?
   foodHistory          FoodHistory[]
+  admin                Boolean       @default(false)
 }
 
 model Usergoal {
-  id          Int    @id @default(autoincrement())
-  userId      Int    @unique
-  user        User   @relation(fields: [userId], references: [id])
-  weightGoal  Float?
-  weightKg    Float?
-  heightCm    Float?
+  id         Int    @id @default(autoincrement())
+  userId     Int    @unique
+  user       User   @relation(fields: [userId], references: [id])
+  weightGoal Float?
+  weightKg   Float?
+  heightCm   Float?
 }
 
 model FoodHistory {
