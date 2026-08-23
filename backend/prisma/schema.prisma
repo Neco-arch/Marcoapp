@@ -16,7 +16,7 @@ model User {
   id                   Int           @id @default(autoincrement())
   username             String        @unique
   password             String
-  users_Macronutrients Json
+  users_Macronutrients Json?         @default("{\"Calories\" : 0 , \"Carb\" : 0 , \"Protein\" : 0 , \"Fat\" : 0 }")
   goal                 Usergoal?
   foodHistory          FoodHistory[]
   admin                Boolean       @default(false)
@@ -33,10 +33,12 @@ model Usergoal {
 
 model FoodHistory {
   id       Int      @id @default(autoincrement())
+  foodname String?
   userId   Int
   user     User     @relation(fields: [userId], references: [id])
-  carb     Float?
-  protein  Float?
-  fat      Float?
+  carb     Float
+  protein  Float
+  fat      Float
+  calories Float
   loggedAt DateTime @default(now())
 }

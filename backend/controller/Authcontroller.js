@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { prisma } = require('../lib/prisma.js')
+const bcrypt = require('bcrypt');
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
@@ -20,44 +21,51 @@ function authenticateToken(req, res, next) {
 
 async function userlogin(req, res) {
     const { username, password } = req.body;
-    // Check Username dupe 
-    const Password_username = await prisma.user.findFirst({
-        where: {
-            username: username,
-            password: password
-        }
-    })
 
-    if (Password_username !== null) {
-        const token = jwt.sign(userPayload, process.env.JWT_SECRET, { expiresIn: '1d' });
+    try {
+        const user = await prisma.user.findFirst({ where: { username } });
+
+        if (!user || !(await bcrypt.compare(password, user.password))) {
+            return res.status(401).json({ success: false, message: 'Invalid credentials' });
+        }
+
+        const token = jwt.sign(
+            { userid: user.id, username: user.username },
+            process.env.JWT_SECRET,
+            { expiresIn: '3d' }
+        );
+
+        console.log(token)
 
         return res.json({ success: true, token: token });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: 'Server error' });
     }
-
-    res.status(400).json({ success: false, message: 'Invalid credentials' });
-
 }
 
 async function signupuser(req, res, next) {
     const { username, password } = req.body
-
-    const dupeuser = await prisma.user.findFirst({
-        where: {
-            username: username
-        }
-    })
-
-    if (dupeuser === null) {
-        const createuser = await prisma.user.create({
-            data: {
-                username: username,
-                password: password
+    try {
+        const dupeuser = await prisma.user.findFirst({
+            where: {
+                username: username
             }
         })
-        next()
+        const SALT_ROUNDS = parseInt(process.env.HASHPASSWORD, 10);
+        const bcryptpassword = await bcrypt.hash(password, SALT_ROUNDS)
+        if (dupeuser === null) {
+            const createuser = await prisma.user.create({
+                data: {
+                    username: username,
+                    password: bcryptpassword,
+                }
+            })
+            next()
+        }
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json({ success: false, message: 'Server error' });
     }
-
-    res.status(400).json({ success: false, message: 'User already exist' });
 }
 
-module.exports = { signupuser, userlogin , authenticateToken }
+module.exports = { signupuser, userlogin, authenticateToken }

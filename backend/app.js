@@ -6,7 +6,9 @@ const app = express()
 
 // Router Import 
 
-const Auth = require('./Routes/Auth')
+const Auth = require('./Routes/Auth.js')
+const progress = require('./Routes/Logprogress.js')
+const logfood = require('./Routes/Logfood.js')
 
 // Middleware
 app.use(cors())
@@ -16,10 +18,11 @@ app.use(express.urlencoded({ extended: true }))
 // Router
 
 app.use('/auth', Auth)
+app.use('/progress', progress)
+app.use('/food', logfood)
 
 
-
-//Startdaapp
+//Start da app
 
 app.listen(process.env.PORT, () => {
     console.log("Server is running ")
