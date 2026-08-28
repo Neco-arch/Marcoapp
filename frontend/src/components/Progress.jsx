@@ -8,7 +8,7 @@ export default function Progress({ Calories, Protein, Carb, Fat }) {
         size={200} 
             label={<>
             <Text size='s' ta="center" >
-                    Calories 
+                    Calories :
                 </Text>
                 <Text size='s' ta="center">
                     {Calories}

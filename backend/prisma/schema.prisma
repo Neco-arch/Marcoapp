@@ -13,13 +13,14 @@ datasource db {
 }
 
 model User {
-  id                   Int           @id @default(autoincrement())
-  username             String        @unique
+  id                   Int               @id @default(autoincrement())
+  username             String            @unique
   password             String
-  users_Macronutrients Json?         @default("{\"Calories\" : 0 , \"Carb\" : 0 , \"Protein\" : 0 , \"Fat\" : 0 }")
+  users_Macronutrients Json?             @default("{\"Calories\" : 0 , \"Carb\" : 0 , \"Protein\" : 0 , \"Fat\" : 0 }")
   goal                 Usergoal?
   foodHistory          FoodHistory[]
-  admin                Boolean       @default(false)
+  admin                Boolean           @default(false)
+  exerciseHistories    ExerciseHistory[]
 }
 
 model Usergoal {
@@ -41,4 +42,12 @@ model FoodHistory {
   fat      Float
   calories Float
   loggedAt DateTime @default(now())
+}
+
+model ExerciseHistory {
+  id             Int      @id @default(autoincrement())
+  caloriesBurned Int
+  createdAt      DateTime @default(now())
+  userId         Int
+  user           User     @relation(fields: [userId], references: [id])
 }

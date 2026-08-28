@@ -1,9 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 body {
   background-color: #242424 !important;
 }
 
+.Header > h2 {
+    font-size: 1.75rem;
+}
+
 p {
     color: white;
+}
+
+.DialogText {
+    color: black;
 }
 
 .Progress_div {
@@ -14,10 +27,46 @@ p {
 .Progress_wrapper {
     padding: 1rem;
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px 5px
+}
+
+.LogFood_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    height: 40%;
+    padding: 1.5rem 0;
+}
+
+.LogFood {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 5%;
+    padding: 2%;
     box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px
 }
 
-.Log_Food_Excersice {
-    height: 40%;
+.LogFood > button {
+    flex-basis: 90%;
+    margin-top: 1.5rem;
     display: flex;
+    justify-content: center;
+}
+
+.Period_meal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.Meal_list {
+    color: white;
+}
+
+dialog {
+    padding: 1rem;
 }
