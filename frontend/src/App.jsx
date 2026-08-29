@@ -1,12 +1,14 @@
 import './App.css'
-import { useState } from 'react'
+
+// Components
 import Progressring from './components/Progress.jsx'
 import LogFood from './components/Logfood.jsx'
+import CaloriesUI from './components/Caloriescounting.jsx'
+import ExceriseUI from './components/Logexcerise.jsx'
 
 
 
 function App() {
-
   return (
     <>
     <div>
@@ -21,14 +23,13 @@ function App() {
       </div>
       </div>
         <LogFood></LogFood>
-        <div>
-          
+        <div className='Excerise_wrapper'>
+          <ExceriseUI></ExceriseUI>
+          <CaloriesUI></CaloriesUI>
         </div>
     </div>
     </>
   )
-
-
 }
 
 export default App

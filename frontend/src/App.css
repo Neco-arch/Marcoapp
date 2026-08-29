@@ -40,6 +40,7 @@ p {
 }
 
 .LogFood {
+    border-radius: 5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -69,4 +70,23 @@ p {
 
 dialog {
     padding: 1rem;
+}
+
+.Excerise_wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 250px;
+    padding: 1rem;   
+}
+
+.Excerise {
+    flex-basis: 50%;
+}
+
+.Caloriesring {
+    display: flex;
+    justify-content: center;
+    flex-basis: 50%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px;
+    border-radius: 5%;
 }

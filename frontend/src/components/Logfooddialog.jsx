@@ -12,11 +12,11 @@ export default function FoodDialog({ opened, toggle, close }) {
         style={{
           position: 'fixed',
           top: '20%',
-          left: '40%',
+          left: '35%',
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <Text size="sm" mb="xs" fw={500}  className='DialogText'>
+        <Text size="sm" mb="xs" fw={500}  style={{fontSize : '1.3rem'}} className='DialogText'>
             Add your meal
         </Text>
 
