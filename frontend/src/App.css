@@ -25,9 +25,16 @@ p {
 }
 
 .Progress_wrapper {
+    display: flex;
+    justify-content: space-between;
     padding: 1rem;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px 5px
+}
+
+.Marco_Section {
+    display: flex;
+    gap: 1rem;
 }
 
 .LogFood_wrapper {
@@ -89,4 +96,8 @@ dialog {
     flex-basis: 50%;
     box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px;
     border-radius: 5%;
+}
+
+.Cal_section {
+    display: flex;
 }

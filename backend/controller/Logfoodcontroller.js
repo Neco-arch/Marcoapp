@@ -4,7 +4,6 @@ async function logfood(req, res) {
     const { carb, protein, fat, foodname, calories } = req.body
     const user = req.user
 
-    console.log(user)
 
     if (user === null) {
         return res.json({ status: "Bad", message: "no token" })
@@ -56,9 +55,39 @@ async function logfood(req, res) {
 
         return res.status(200).send({ status: "OK", message: "Added food" })
     } catch (error) {
-        console.error(error)
         return res.status(500).send({ status: "Bad", message: "Something went wrong" })
     }
 }
 
-module.exports = { logfood }
+async function readfood(req, res) {
+    const user = req.user
+
+    if (user === null) {
+        return res.json({ status: "Bad", message: "no token" })
+    }
+    try {
+        const startOfToday = new Date();
+        startOfToday.setHours(0, 0, 0, 0);
+
+        const startOfTomorrow = new Date(startOfToday);
+        startOfTomorrow.setDate(startOfTomorrow.getDate() + 1);
+
+        const result = await prisma.foodHistory.findMany({
+            where: {
+                userId: parseInt(user.userid),
+                loggedAt: {
+                    gte: startOfToday,
+                    lt: startOfTomorrow
+                }
+            }
+        })
+
+        return res.json({ status: "Ok", data: result })
+
+    } catch (error) {
+        return res.status(500).send({ status: "Bad", message: "Something went wrong" })
+    }
+}
+
+
+module.exports = { logfood, readfood }

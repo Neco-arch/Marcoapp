@@ -1,72 +1,68 @@
-import { RingProgress , Text } from '@mantine/core';
+import { RingProgress , Text  } from '@mantine/core';
 import '@mantine/core/styles.css';
 
-export default function Progress({ Calories, Protein, Carb, Fat }) {
+export default function Progress({ Calories, WeightGoal  }) {
     return (
         <>
+        <div className='Cal_wrapper'>
+        <h2>Calories</h2>
+        <div className='Cal_section'>
         <RingProgress
         size={200} 
             label={<>
             <Text size='s' ta="center" >
-                    Calories :
-                </Text>
-                <Text size='s' ta="center">
-                    {Calories}
+                Calories 
                 </Text>
             </>
-
             }
             sections={[
                 { value: 10, color: 'cyan' },
             ]}
         />
-
-        <RingProgress
+        </div>
+        </div>
+        <div className='Marco_wrapper'>
+            <h2>Marco</h2>
+        <div className='Marco_Section'>
+                    <RingProgress
         size={200} 
             label={<>
-            <Text size='s' ta="center">
-                    Carb :
-                </Text>
-                <Text size='s' ta="center">
-                    {Carb}
+            <Text size='s' ta="center" >
+                    Carb
                 </Text>
             </>
+
             }
             sections={[
                 { value: 10, color: 'cyan' },
             ]}
-        />
-
-        <RingProgress
+        />        <RingProgress
         size={200} 
             label={<>
-            <Text size='s' ta="center">
-                    Protein :
-                </Text>
-                <Text size='s' ta="center">
-                    {Protein}
+            <Text size='s' ta="center" >
+                    Protein
                 </Text>
             </>
+
             }
             sections={[
                 { value: 10, color: 'cyan' },
             ]}
-        />
-        <RingProgress
+        />        <RingProgress
         size={200} 
-        label={<>
-            <Text size='s' ta="center">
-                    Fat :
-                </Text>
-                <Text size='s' ta="center">
-                    {Fat}
+            label={<>
+            <Text size='s' ta="center" >
+                    Fat
                 </Text>
             </>
+
             }
             sections={[
                 { value: 10, color: 'cyan' },
             ]}
         />
+        </div>
+        </div>
         </>
     );
 }
