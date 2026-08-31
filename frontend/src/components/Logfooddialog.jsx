@@ -1,7 +1,27 @@
+import { useState } from 'react';
+import axios from 'axios'
 import { Dialog, Group, Button, TextInput, Text, Select } from '@mantine/core';
 import './Dialog.css'
 
 export default function FoodDialog({ opened, toggle, close }) {
+  const [formdata , saveformdata ] = useState({
+    'mealname' : '' , 
+    'carb' : '' , 
+    'protein' : '' ,
+    'fat' : ''
+  })
+
+  const handleChange = (field) => (event) => {
+    const value = event.currentTarget.value; 
+    setformdata((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+
+  const handlesubmit = () => {
+
+  };
+  };
   return (
     <>
       <Dialog
@@ -12,13 +32,16 @@ export default function FoodDialog({ opened, toggle, close }) {
         style={{
           position: 'fixed',
           top: '20%',
-          left: '35%',
+          left: '40%',
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <Text size="sm" mb="xs" fw={500}  style={{fontSize : '1.3rem'}} className='DialogText'>
-            Add your meal
+        <Group justify='center' display={'flex'}>
+          <Text size="sm" mb="xs" fw={500}  style={{fontSize : '1.3rem'}} className='DialogText'  >
+          Add your meal
         </Text>
+        </Group>
+
 
         <Group align="flex-end">
             <div>

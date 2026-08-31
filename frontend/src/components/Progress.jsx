@@ -19,6 +19,10 @@ export default function Progress({ Calories, WeightGoal  }) {
                 { value: 10, color: 'cyan' },
             ]}
         />
+        <div>
+            <h2>Remaining :</h2>
+            <h2>1980</h2>
+        </div>
         </div>
         </div>
         <div className='Marco_wrapper'>

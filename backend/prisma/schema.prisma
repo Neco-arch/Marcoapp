@@ -21,6 +21,7 @@ model User {
   foodHistory          FoodHistory[]
   admin                Boolean           @default(false)
   exerciseHistories    ExerciseHistory[]
+  calories_goal        Int               @default(2000)
 }
 
 model Usergoal {
