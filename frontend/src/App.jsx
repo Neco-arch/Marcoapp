@@ -3,8 +3,8 @@ import './App.css'
 // Components
 import Progress from './components/Progress.jsx'
 import LogFood from './components/Logfood.jsx'
-import CaloriesUI from './components/Caloriescounting.jsx'
 import ExceriseUI from './components/Logexcerise.jsx'
+import Gettingstart from './components/gettingstart.jsx'
 
 
 
@@ -22,9 +22,9 @@ function App() {
         <LogFood></LogFood>
         <div className='Excerise_wrapper'>
           <ExceriseUI></ExceriseUI>
-          <CaloriesUI></CaloriesUI>
         </div>
     </div>
+    <Gettingstart></Gettingstart>
     </>
   )
 }

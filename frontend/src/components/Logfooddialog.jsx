@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios'
-import { Dialog, Group, Button, TextInput, Text, Select } from '@mantine/core';
-import './Dialog.css'
+import { Modal, Group, Button, TextInput, Text, Select } from '@mantine/core';
+import './css/Dialog.css'
 
 export default function FoodDialog({ opened, toggle, close }) {
   const [formdata , saveformdata ] = useState({
@@ -13,36 +13,28 @@ export default function FoodDialog({ opened, toggle, close }) {
 
   const handleChange = (field) => (event) => {
     const value = event.currentTarget.value; 
-    setformdata((prev) => ({
+    saveformdata((prev) => ({
       ...prev,
       [field]: value,
     }));
-
-  const handlesubmit = () => {
-
   };
-  };
+
+  const handlesubmit = async() => {
+
+    }
   return (
-    <>
-      <Dialog
-        opened={opened}
-        withCloseButton
-        onClose={close}
-        size="lg"
-        style={{
-          position: 'fixed',
-          top: '20%',
-          left: '40%',
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
-        <Group justify='center' display={'flex'}>
-          <Text size="sm" mb="xs" fw={500}  style={{fontSize : '1.3rem'}} className='DialogText'  >
-          Add your meal
-        </Text>
-        </Group>
-
-
+    <Modal
+      opened={opened}
+      onClose={close}
+      title="Add your meal"
+      size="lg"
+      centered
+      overlayProps={{
+        backgroundOpacity: 0.85,
+        color: '#000',
+        blur: 2,
+      }}
+    >
         <Group align="flex-end">
             <div>
                 <Select 
@@ -52,25 +44,24 @@ export default function FoodDialog({ opened, toggle, close }) {
                  />
             </div>
             <div>
-                <label>Meal name : </label><TextInput placeholder="French Fries"  />
+                <label>Meal name : </label><TextInput placeholder="French Fries" value={formdata.mealname} onChange={handleChange('mealname')}  />
             </div>
             <div>
-                <label>Carb : </label><TextInput placeholder="e.g. 20g"  />
-            </div>
-
-            <div>
-                <label>Protein : </label><TextInput placeholder="e.g. 30g"  />
+                <label>Carb : </label><TextInput placeholder="e.g. 20g"  value={formdata.carb}  onChange={handleChange('carb')}/>
             </div>
 
             <div>
-                <label>Fat : </label><TextInput placeholder="e.g. 40g"  />
+                <label>Protein : </label><TextInput placeholder="e.g. 30g"  value={formdata.protein}  onChange={handleChange('protein')}/>
+            </div>
+
+            <div>
+                <label>Fat : </label><TextInput placeholder="e.g. 40g"  value={formdata.fat}  onChange={handleChange('fat')}/>
             </div>
 
         </Group>
         <Group className='Submit_button'>
-            <Button onClick={close}>Add meal</Button>
+            <Button onClick={handlesubmit}>Add meal</Button>
         </Group>
-      </Dialog>
-    </>
+    </Modal>
   );
 }

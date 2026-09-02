@@ -11,7 +11,7 @@ export default function Progress({ Calories, WeightGoal  }) {
         size={200} 
             label={<>
             <Text size='s' ta="center" >
-                Calories 
+                🍽️ Calories 
                 </Text>
             </>
             }
@@ -32,6 +32,7 @@ export default function Progress({ Calories, WeightGoal  }) {
         size={200} 
             label={<>
             <Text size='s' ta="center" >
+                🍞
                     Carb
                 </Text>
             </>
@@ -44,7 +45,7 @@ export default function Progress({ Calories, WeightGoal  }) {
         size={200} 
             label={<>
             <Text size='s' ta="center" >
-                    Protein
+                    🥩 Protein
                 </Text>
             </>
 
@@ -56,7 +57,7 @@ export default function Progress({ Calories, WeightGoal  }) {
         size={200} 
             label={<>
             <Text size='s' ta="center" >
-                    Fat
+                    🧴 Fat
                 </Text>
             </>
 

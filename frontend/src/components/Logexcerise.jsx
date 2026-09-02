@@ -1,6 +1,6 @@
-import "./Logexcerise.css";
+import "./css/Logexcerise.css";
 import { useState } from "react";
-import { Dialog, Group, Button, TextInput, Text, Select } from "@mantine/core";
+import { Modal, Group, Button, TextInput, Text, Select } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
 
@@ -32,31 +32,18 @@ export default function ExceriseUI() {
         <Button onClick={toggle}>Add Excerise</Button>
       </div>
 
-      <Dialog
+      <Modal
         opened={opened}
-        withBorder
-        withCloseButton
         onClose={close}
+        title="Add your excerise"
         size="lg"
-        style={{
-          position: "fixed",
-          top: "40%",
-          left: "40%",
-          transform: "translate(-50%, -50%)",
+        centered
+        overlayProps={{
+          backgroundOpacity: 0.85,
+          color: "#000",
+          blur: 2,
         }}
       >
-        <Group display={"flex"} justify="center">
-          <Text
-            size="sm"
-            mb="xs"
-            fw={500}
-            style={{ fontSize: "1.3rem" }}
-            className="DialogText"
-          >
-            Add your excerise
-          </Text>
-        </Group>
-
         <Group>
           <div>
             <label>Excerise name : </label>
@@ -78,9 +65,9 @@ export default function ExceriseUI() {
         </Group>
 
         <Group className="Submit_button">
-          <Button onClick={close}>Add meal</Button>
+          <Button onClick={handlesubmit}>Add meal</Button>
         </Group>
-      </Dialog>
+      </Modal>
     </>
   );
 }
