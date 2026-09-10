@@ -1,11 +1,19 @@
+import { useState , useEffect } from 'react';
 import { RingProgress , Text  } from '@mantine/core';
 import '@mantine/core/styles.css';
 
-export default function Progress({ Calories, WeightGoal  }) {
+
+
+export default function Progress() {
+
+    useEffect(async () => {
+    },[])
+
+
     return (
         <>
         <div className='Cal_wrapper'>
-        <h2>Calories</h2>
+        <h2 className='Caloriesh2'>Calories</h2>
         <div className='Cal_section'>
         <RingProgress
         size={200} 
@@ -19,7 +27,7 @@ export default function Progress({ Calories, WeightGoal  }) {
                 { value: 10, color: 'cyan' },
             ]}
         />
-        <div>
+        <div className='RemainingCal'>
             <h2>Remaining :</h2>
             <h2>1980</h2>
         </div>

@@ -8,6 +8,14 @@ export default function Signup() {
     password : ''
   })
 
+    const handleChange = (field) => (event) => {
+    const value = event.currentTarget.value; 
+    saveformdata((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
 
   return (
     <Container size={500} my={40}>
@@ -16,8 +24,8 @@ export default function Signup() {
       </Title>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md" className='LoginCard' w={400} h={300} >
-        <TextInput label="Username" placeholder="John Pork" required radius="md" />
-        <PasswordInput label="Password" placeholder="Your password" required mt="md" radius="md" />
+        <TextInput label="Username" placeholder="John Pork" required radius="md" onChange={handleChange('username')}/>
+        <PasswordInput label="Password" placeholder="Your password" required mt="md" radius="md" onChange={handleChange('password')}/>
         <Button fullWidth mt="xl" radius="md">
           Sign up
         </Button>

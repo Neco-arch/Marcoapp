@@ -26,10 +26,8 @@ p {
 
 .Progress_wrapper {
     display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px 5px
+    flex: 1;
+    justify-content: space-evenly;
 }
 
 .Marco_Section {
@@ -46,15 +44,41 @@ p {
     padding: 1.5rem 0;
 }
 
+.Cal_wrapper {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px 5px;
+}
+
+.RemainingCal {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.Caloriesh2 {
+    text-align: center;
+}
+
+.Invisible {
+    visibility: hidden;
+    width: 50%;
+}
+
 .LogFood {
     border-radius: 5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 100%;
+    width: 94%;
     padding-top: 5%;
     padding: 2%;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px 5px;
 }
 
 .LogFood > button {
@@ -62,6 +86,17 @@ p {
     margin-top: 1.5rem;
     display: flex;
     justify-content: center;
+}
+
+.Marco_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px 5px;
+    flex-basis: 60%;
 }
 
 .Period_meal {
@@ -82,10 +117,20 @@ dialog {
 .Excerise {
     display: flex;
     flex-direction: column;
+        justify-content: center;
+    align-items: center;
     border-radius: 5%;
+    width: 96%;
+    padding-left: 5%;
+}
+
+.Excerise_wrapper {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px 5px;
 }
 
 
 .Cal_section {
     display: flex;
+    
 }

@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client'
 import { MantineProvider } from '@mantine/core';
 import './index.css'
+import './App.css'
 import App from './App.jsx'
 import Login from './page/login.jsx';
 import Signup from './page/signup.jsx';

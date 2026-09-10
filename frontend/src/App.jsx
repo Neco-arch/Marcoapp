@@ -1,4 +1,4 @@
-import './App.css'
+
 
 // Components
 import Progress from './components/Progress.jsx'
